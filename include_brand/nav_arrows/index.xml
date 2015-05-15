@@ -1,0 +1,100 @@
+<krpano>
+
+    <layer name       ="arrows_container"
+           align      ="bottomright"
+           alpha      ="1"
+           autoalpha  ="true"
+           bgalpha    ="0"
+           bgcapture  ="true"
+           bgcolor    ="#000"
+           devices    ="desktop|tablet"
+           edge       ="bottomright"
+           first_time ="true"
+           handcursor ="false"
+           height     ="340"
+           keep       ="true"
+           type       ="container"
+           visible    ="true"
+           width      ="42"
+           x          ="20"
+           y          ="20"
+           zorder     ="18"
+           >
+
+        <layer name       ="arrow_left"
+               align      ="topleft"
+               crop       ="0|0|42|42"
+               ondowncrop ="0|42|42|42"
+               edge       ="leftcentre"
+               ondown     ="set(hlookat_moveforce,-.5);"
+               onup       ="set(hlookat_moveforce,0);"
+               style      ="arrow_style"
+               y          ="18"
+               />
+
+        <layer name       ="arrow_right"
+               align      ="topleft"
+               crop       ="42|0|42|42"
+               ondowncrop ="42|42|42|42"
+               edge       ="leftcentre"
+               ondown     ="set(hlookat_moveforce,+.5);"
+               onup       ="set(hlookat_moveforce,0);"
+               style      ="arrow_style"
+               y          ="78"
+               />
+
+        <layer name       ="arrow_up"
+               align      ="topleft"
+               crop       ="84|0|42|42"
+               ondowncrop ="84|42|42|42"
+               edge       ="leftcentre"
+               ondown     ="set(vlookat_moveforce,-.5);"
+               onup       ="set(vlookat_moveforce,0);"
+               style      ="arrow_style"
+               y          ="138"
+               />
+
+        <layer name       ="arrow_down"
+               align      ="topleft"
+               crop       ="126|0|42|42"
+               ondowncrop ="126|42|42|42"
+               edge       ="leftcentre"
+               ondown     ="set(vlookat_moveforce,+.5);"
+               onup       ="set(vlookat_moveforce,0);"
+               style      ="arrow_style"
+               y          ="198"
+               />
+
+        <layer name       ="zoom_in"
+               align      ="topleft"
+               crop       ="168|0|42|42"
+               ondowncrop ="168|42|42|42"
+               edge       ="leftcentre"
+               ondown     ="set(fov_moveforce,-.2);"
+               onup       ="set(fov_moveforce,0);"
+               style      ="arrow_style"
+               y          ="258"
+               />
+
+        <layer name       ="zoom_out"
+               align      ="topleft"
+               crop       ="210|0|42|42"
+               ondowncrop ="210|42|42|42"
+               edge       ="leftcentre"
+               ondown     ="set(fov_moveforce,+.2);"
+               onup       ="set(fov_moveforce,0);"
+               style      ="arrow_style"
+               y          ="318"
+               />
+
+    </layer>
+
+    <style name       ="arrow_style"
+           children   ="false"
+           handcursor ="true"
+           keep       ="true"
+           url        ="%SWFPATH%/include_brand/nav_arrows/arrow_set.png"
+           zorder     ="15"
+           />
+
+</krpano>

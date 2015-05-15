@@ -1,0 +1,86 @@
+<krpano>
+
+    <action name="add_title">
+        txtadd(layer[title_text].html,'[p]',get(layer[panolist].pano[get(xml.scene)].title),'[/p]');
+        set(layer[title].width,get(layer[title_text].width));
+        <!-- If I need to make the text background  taller, look the code in 'mazda manufacturer' -->
+    </action>
+
+    <action name="show_title">
+        tween(layer[title].y,50,.5,easeoutquad);
+    </action>
+
+    <action name="hide_title">
+        tween(layer[title].y,-100,.5,easeoutquad);
+    </action>
+
+    <action name="update_title">
+        txtadd(layer[title_text].html,'[p]',get(layer[panolist].pano[get(xml.scene)].title),'[/p]');
+    </action>
+
+    <data name="title_css">
+        p {color:#FFFFFF; font-family:sans-serif; font-size:16px; text-align:center; font-weight:bold;}
+    </data>
+
+    <layer name            ="title"
+           align           ="topcentre"
+           alpha           ="1"
+           bgalpha         ="0"
+           bgcapture       ="false"
+           children        ="true"
+           devices         ="desktop|ipad"
+           edge            ="topcentre"
+           handcursor      ="false"
+           height          ="40"
+           keep            ="true"
+           maskchildren    ="false"
+           type            ="container"
+           visible         ="true"
+           width           ="10"
+           x               ="0"
+           y               ="-100"
+           zorder          ="1"
+           >
+
+        <layer name            ="title_text"
+               align           ="centertop"
+               alpha           ="0.8"
+               autoheight      ="true"
+               background      ="false"
+               backgroundcolor ="0xdddddd"
+               children        ="false"
+               css             ="data:title_css"
+               edge            ="centertop"
+               handcursor      ="false"
+               height          ="50"
+               html            =""
+               keep            ="true"
+               selectable      ="false"
+               textglow        ="3"
+               textglowcolor   ="0x000000"
+               url             ="%SWFPATH%/plugins/textfield.swf"
+               visible         ="true"
+               width           ="360"
+               wordwrap        ="true"
+               x               ="0"
+               y               ="8"
+               zorder          ="2"
+               />
+
+        <layer name        ="title_bg"
+               align       ="centertop"
+               alpha       =".3"
+               children    ="false"
+               edge        ="centertop"
+               handcursor  ="false"
+               keep        ="true"
+               style       ="title_bg_style"
+               url         ="%SWFPATH%/include_brand/title/title_bg.png"
+               visible     ="true"
+               y           ="0"
+               zorder      ="1"
+               />
+
+    </layer>
+
+</krpano>

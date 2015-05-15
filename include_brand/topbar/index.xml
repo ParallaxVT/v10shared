@@ -1,0 +1,170 @@
+<krpano>
+
+    <layer name       ="topbar_container"
+           align      ="topcenter"
+           bgalpha    ="1"
+           bgcapture  ="true"
+           bgcolor    ="0x1a1a1a"
+           handcursor ="false"
+           height     ="50"
+           type       ="container"
+           keep       ="true"
+           width      =""
+           x          ="0"
+           y          ="0"
+           zorder     ="10"
+           >
+
+        <layer name       ="menu_icon"
+               align      ="lefttop"
+               handcursor ="true"
+               onclick    ="switch_sidepanel();"
+               url        ="%SWFPATH%/include_brand/sidebar/icon_menu.png"
+               x          ="20"
+               y          ="16"
+               />
+
+        <layer name    ="more_cars_btn"
+               align   ="lefttop"
+               html    ="[h1]Return[/h1]"
+               onclick ="open_brands_html();"
+               style   ="button_style"
+               url     ="%SWFPATH%/plugins/textfield.swf"
+               x       ="60"
+               width   ="130"
+               visible ="false"
+               />
+
+        <layer name     ="fullscreen_btn"
+               align    ="righttop"
+               devices  ="fullscreensupport"
+               html     ="[h1]Fullscreen[/h1]"
+               onclick  ="switch(fullscreen);"
+               style    ="button_style"
+               url      ="%SWFPATH%/plugins/textfield.swf"
+               x        =""
+               width    ="110"
+               onloaded ="if(device.touchdevice, set(x,230);,set(x,60););"
+               />
+
+        <layer name    ="navigation_btn"
+               align   ="righttop"
+               devices ="touchdevice"
+               html    ="[h1]Gyro: OFF[/h1]"
+               onclick ="switch_navigation();"
+               style   ="button_border_style"
+               url     ="%SWFPATH%/plugins/textfield.swf"
+               x       ="20"
+               width   ="120"
+               visible ="true"
+               />
+
+        <layer name       ="navigation_panel"
+               align      ="righttop"
+               children   ="false"
+               devices    ="touchdevice"
+               handcursor ="false"
+               keep       ="true"
+               parent     ="navigation_btn"
+               url        ="%SWFPATH%/include_brand/navigation/click_panel.png"
+               visible    ="true"
+               x          ="10"
+               y          ="60"
+               zorder     ="15"
+               />
+
+        <layer name        ="navigation_arrow"
+               align       ="righttop"
+               children    ="false"
+               devices     ="touchdevice"
+               handcursor  ="false"
+               keep        ="true"
+               altonloaded ="delayedcall(2,move_arrow());"
+               parent      ="navigation_panel"
+               url         ="%SWFPATH%/include_brand/navigation/arrow_panel.png"
+               visible     ="true"
+               x           ="180"
+               y           ="15"
+               zorder      ="20"
+               />
+
+        <layer name       ="separator"
+               align      ="righttop"
+               devices    ="touchdevice"
+               handcursor ="false"
+               url        ="%SWFPATH%/include_brand/sidebar/separator.png"
+               x          ="200"
+               y          ="16"
+               visible    ="false"
+               onloaded   ="if(navigation_btn, if(fullscreen_btn, set(visible,true);););"
+               />
+
+    </layer>
+
+    <action name="open_brands_html">
+        if(develmode.enabled == true,
+        openurl(../../grid_more.html,_self);
+        ,
+        openurl(../grid_more.html,_self);
+        );
+    </action>
+
+    <action name="move_arrow">
+        set(pos1,150);
+        set(pos2,180);
+        tween(layer[navigation_arrow].x,get(pos1),.8,easeinquad);
+        delayedcall(.8,tween(layer[navigation_arrow].x, get(pos2),.8,easeoutquad));
+        delayedcall(1.6,tween(layer[navigation_arrow].x,get(pos1),.8,easeinquad));
+        delayedcall(2.4,tween(layer[navigation_arrow].x,get(pos2),.8,easeoutquad));
+        delayedcall(3.2,tween(layer[navigation_arrow].x,get(pos1),.8,easeinquad));
+        delayedcall(4.0,tween(layer[navigation_arrow].x,get(pos2),.8,easeoutquad));
+        delayedcall(5,
+        tween(layer[navigation_arrow].alpha,0,.5,easeoutquad);
+        tween(layer[navigation_panel].alpha,0,.5,easeoutquad);
+        );
+        delayedcall(5.5,
+        removelayer(navigation_arrow);
+        removelayer(navigation_panel);
+        );
+    </action>
+
+    <style name            ="button_style"
+           autoheight      ="true"
+           background      ="false"
+           backgroundcolor ="0x1a1a1a"
+           children        ="false"
+           css             ="data:tour_css"
+           handcursor      ="true"
+           height          =""
+           keep            ="true"
+           selectable      ="false"
+           textglow        ="0"
+           textglowcolor   ="0x000000"
+           y               ="10"
+           vcenter         ="false"
+           zorder          ="15"
+           />
+
+    <style name            ="button_border_style"
+           autoheight      ="true"
+           background      ="false"
+           backgroundcolor ="0x1a1a1a"
+           border          ="true"
+           borderalpha     ="1.0"
+           bordercolor     ="0x64E0FF"
+           borderwidth     ="1.0"
+           children        ="false"
+           css             ="data:tour_css"
+           handcursor      ="true"
+           height          =""
+           keep            ="true"
+           roundedge       ="0"
+           selectable      ="false"
+           textglow        ="0"
+           textglowcolor   ="0x000000"
+           vcenter         ="false"
+           y               ="10"
+           zorder          ="15"
+           />
+
+</krpano>

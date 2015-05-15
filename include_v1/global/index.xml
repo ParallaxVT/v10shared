@@ -1,0 +1,49 @@
+﻿<krpano>
+
+    <events onpreviewcomplete="if(develmode.enabled!=true,delayedcall(5, set(autorotate.enabled,true)));"/>
+
+    <addglobal enabled="true"/>
+
+    <display fps="30"
+             details="20"
+             tessmode="0"
+             movequality="low"
+             stillquality="best"
+             flash10="on"
+             movequality10="best"
+             stillquality10="best"
+             stilltime="0.25"
+             />
+
+    <autorotate enabled="false" waittime="7" horizon="off" speed="6"/>
+
+    <progress showload="none" showwait="none" showreloads="false" parent="" />
+
+    <control mousefovchange="0" mousetype="drag2d" />
+
+    <data name="custom_fov">100</data>
+
+    <view hlookat="0"
+          vlookat="0"
+          fov="95"
+          fovmin="25"
+          fovmax="110"
+          limitfov="true"
+          fovtype="DFOV"
+          maxpixelzoom="1"
+          />
+
+    <security>
+        <crossdomainxml url="https://s3-eu-west-1.amazonaws.com/autofs/shared/tourvista/crossdomain.xml" />
+    </security>
+
+    <contextmenu>
+        <item name="build"
+              caption="Built by GForces"
+              onclick="openurl(http://www.gforces.co.uk);"
+              />
+    </contextmenu>
+
+  <control keycodesin="107" keycodesout="109" />
+
+</krpano>

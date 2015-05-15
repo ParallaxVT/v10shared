@@ -1,0 +1,16 @@
+<krpano>
+
+    <action name="activatepano_scenevariation">
+        loadscene(%1,null,KEEPVIEW|MERGE,BLEND(1));
+        scene_setup(get(xml.scene));
+    </action>
+
+    <action name="activatepano">
+        <!-- Don't use blend option on iPhones as it makes them crash -->
+        set(blendflag, 'BLEND(0.5)');
+        if(device.iphone, set(blendflag, 'NOBLEND') );
+        loadscene(%1,null, MERGE, get(blendflag) );
+        scene_setup(get(xml.scene));
+    </action>
+
+</krpano>

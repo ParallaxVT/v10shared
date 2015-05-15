@@ -1,0 +1,52 @@
+<krpano>
+
+    <action name="switch_navigation">
+        if(layer[skin_gyro].enabled == true,
+        go_touch();
+        ,
+        go_gyro();
+        );
+    </action>
+
+    <action name="go_touch">
+        set(layer[skin_gyro].enabled,false);
+        set(layer[navigation_btn].html,[h1]Gyro: OFF[/h1]);
+    </action>
+
+    <action name="go_gyro">
+        set(layer[skin_gyro].enabled,true);
+        set(layer[navigation_btn].html,[h1]Gyro: ON[/h1]);
+    </action>
+
+    <data name="nav_item_css">
+        h1 { color:#00aad4;
+        font-family:arial;
+        font-size:16px;
+        text-align:left;
+        font-weight:normal;
+        margin-left: 20px;
+        }
+    </data>
+
+    <data name="nav_item_css" devices="mobile">
+        h1 { color:#00aad4;
+        font-family:arial;
+        font-size:26px;
+        text-align:left;
+        font-weight:normal;
+        margin-left: 20px;
+        }
+    </data>
+
+    <layer name     ="skin_gyro"
+           camroll  ="true"
+           devices  ="html5+!firefox+!android"
+           enabled  ="false"
+           friction ="0"
+           keep     ="true"
+           velastic ="0"
+           alturl   ="%SWFPATH%/plugins/gyro.js"
+           onavailable ="set(layer[navigation_btn].visible,true));"
+           />
+
+</krpano>

@@ -1,0 +1,75 @@
+﻿<krpano>
+
+    <events name="skin_events" keep="true"
+            onxmlcomplete="set(events[skin_events].onxmlcomplete,null); skin_startup();"
+            onresize="skin_onresize();"
+            />
+    <!-- onnewpano="set(layer[sidepanel_container].status,opened); switch_sidepanel();" -->
+    <!-- onremovepano="trace(onremovepano); showlog();" -->
+    <!-- onloadcomplete="trace(onloadcomplete); showlog();" -->
+
+    <action name="startup">
+        if(startscene === null, copy(startscene,scene[0].name));
+        loadscene(get(startscene), null, MERGE);
+        delayedcall(.1,
+        <!-- trace(scene[get(xml.scene)].name); showlog(); -->
+        set_current(0);
+        );
+        delayedcall(1,switch_sidepanel());
+    </action>
+
+    <action name="skin_startup">
+        <!-- set top bar width -->
+        set(layer[topbar_container].width,get(stagewidth));
+        <!-- set sidepanel width -->
+        set(layer[sidepanel_container].width,280);
+        <!-- set scroll_container_1 and scroll_container_2 height -->
+        add(menus_h,get(layer[topbar_container].height) , get(layer[thumb_container].height));
+        sub(container_h,get(stageheight),get(menus_h));
+        <!-- trace(get(container_h)); showlog(); -->
+        set(layer[scroll_container_1].height,get(container_h));
+        <!-- trace(get(layer[thumb_container].height)); showlog(); -->
+        <!-- trace(get(separator)); showlog(); -->
+        set(layer[scroll_container_1].y,get(layer[thumb_container].height));
+        <!-- Make scrollarea for the container 1 visible -->
+        set(layer[items_container].visible,true);
+    </action>
+
+    <action name="skin_onresize">
+        skin_startup();
+    </action>
+
+    <action name="set_current">
+        <!-- trace(scene[get(xml.scene)].name); showlog(); -->
+        txtadd(current_item, 'container_1_item_', %1);
+        set(layer[selected_item_1].parent,get(current_item));
+        <!-- trace('current_item: ',get(current_item)); showlog(); -->
+    </action>
+
+    <!-- When a scene is loaded using the sidebar-->
+    <!-- %2 = scenevariation and it doesn't call movecamera() -->
+    <!-- There are 2 types of brands: -->
+    <!-- - brands/index.html: it doesn't show the 'More Brands' button -->
+    <!-- - brands/more.html: %3 = more and it shows the 'More Brands' button -->
+    <action name="activatepano">
+        sub(val_a, get(data[number_of_scenes].content), 1);
+        mul(val_b, get(val_a), 50);
+        add(val_c, get(val_b),52);
+        set(layer[items_container].height,get(val_c));
+        <!-- trace('Value of 1 is: ', %1); showlog(); -->
+        <!-- Highlight clicked buttom -->
+        txtadd(current_item, 'container_1_item_', %1);
+        set(layer[selected_item_1].parent,get(current_item));
+        <!-- trace('current_item: ',get(current_item)); showlog(); -->
+        loadscene(%1,null,MERGE,BLEND(1));
+        <!-- trace(get(open_scene)); showlog(); -->
+        <!-- loadscene(get(scene[%1].name),null,MERGE,BLEND(1)); -->
+        if(%2 == null, movecamera_%1());
+        if(%3 == more, set(layer[more_cars_btn].visible,true));
+        add_title();
+        add_message();
+        delayedcall(1,show_sidepanel());
+        trace('Scene: ', get(xml.scene));
+    </action>
+
+</krpano>

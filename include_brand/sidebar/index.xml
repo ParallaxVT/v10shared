@@ -1,0 +1,203 @@
+<krpano>
+
+    <action name="switch_sidepanel">
+        if(layer[sidepanel_container].status == closed,
+        show_sidepanel();
+        ,
+        hide_sidepanel();
+        );
+        <!-- Close navigation panel if it's open -->
+        if(layer[navigation_container].status == opened,
+        tween(layer[navigation_container].x,-210,.5,easeoutquad);
+        );
+    </action>
+
+    <action name="show_sidepanel">
+        tween(layer[sidepanel_container].x,get(layer[sidepanel_container].width),.5,easeoutquad);
+        tween(layer[title].y,0,.5,easeoutquad);
+        set(layer[sidepanel_container].status,opened);
+    </action>
+
+    <action name="hide_sidepanel">
+        tween(layer[sidepanel_container].x,0,.5,easeoutquad);
+        tween(layer[title].y,50,.5,easeoutquad);
+        set(layer[sidepanel_container].status,closed);
+    </action>
+
+    <action name="show_cont_1">
+        tween(layer[scroll_container_1].x,0,.5,easeoutquad);
+    </action>
+
+    <layer name         ="sidepanel_container"
+           align        ="topleft"
+           bgalpha      ="1"
+           bgcapture    ="true"
+           bgcolor      ="0x1a1a1a"
+           edge         ="topright"
+           handcursor   ="false"
+           height       ="100%"
+           keep         ="true"
+           maskchildren ="true"
+           status       ="closed"
+           type         ="container"
+           width        ="280"
+           x            ="0"
+           y            ="50"
+           zorder       ="10"
+           >
+
+        <layer name       ="thumb_container"
+               align      ="topleft"
+               bgalpha    ="1"
+               bgcapture  ="true"
+               bgcolor    ="0xffffff"
+               devices    ="!mobile"
+               edge       ="topleft"
+               handcursor ="false"
+               height     ="180"
+               status     ="closed"
+               type       ="container"
+               keep       ="true"
+               width      ="260"
+               x          ="10"
+               y          ="-10"
+               zorder     ="50"
+               >
+            <layer name      ="thumb"
+                   align     ="centre"
+                   edge      ="centre"
+                   handcursor ="false"
+                   kee       ="true"
+                   url       ="%CURRENTXML%/content/thumb.jpg"
+                   x         ="0"
+                   y         ="0"
+                   zorder    ="50"
+                   />
+        </layer>
+
+        <layer name       ="scroll_container_1"
+               align      ="topleft"
+               bgalpha    ="1"
+               bgcapture  ="true"
+               bgcolor    ="0x121212"
+               edge       ="topleft"
+               handcursor ="false"
+               height     =""
+               status     ="closed"
+               type       ="container"
+               keep       ="true"
+               width      ="100%"
+               x          ="0"
+               y          =""
+               zorder     ="10"
+               >
+
+            <layer name   ="items_container"
+                   align     ="topleft"
+                   alturl    ="%SWFPATH%/plugins/scrollarea.js"
+                   children  ="true"
+                   direction ="v"
+                   height    =""
+                   url       ="%SWFPATH%/plugins/scrollarea.swf"
+                   visible   ="false"
+                   width     ="100%"
+                   zorder    ="20"
+                   />
+
+        </layer>
+
+    </layer>
+
+    <layer name       ="selected_item_1"
+           align      ="lefttop"
+           edge       ="lefttop"
+           handcursor ="true"
+           height     ="48"
+           keep       ="true"
+           parent     =""
+           url        ="%SWFPATH%/include_brand/sidebar/current.png"
+           width      ="10"
+           x          ="10"
+           y          ="0"
+           />
+
+    <layer name       ="selected_item_2"
+           align      ="lefttop"
+           edge       ="lefttop"
+           handcursor ="true"
+           height     ="48"
+           keep       ="true"
+           parent     =""
+           url        ="%SWFPATH%/include_brand/sidebar/current.png"
+           width      ="10"
+           x          ="10"
+           y          ="0"
+           />
+
+    <style name            ="submenu_btn_style"
+           autoheight      ="false"
+           backgroundcolor ="0x2f2f2f"
+           children        ="false"
+           css             ="data:tour_css"
+           height          ="50"
+           keep            ="true"
+           selectable      ="false"
+           textglow        ="0"
+           textglowcolor   ="0x000000"
+           y               ="10"
+           vcenter         ="true"
+           zorder          ="15"
+           />
+
+    <!-- Areas -->
+    <style name            ="container_1_item_style"
+           align           ="lefttop"
+           autoheight      ="false"
+           background      ="true"
+           backgroundcolor ="0x1f1f1f"
+           children        ="false"
+           css             ="data:item_css"
+           handcursor      ="true"
+           height          ="48"
+           keep            ="true"
+           parent          ="items_container"
+           selectable      ="false"
+           textglow        ="0"
+           textglowcolor   ="0x000000"
+           x               ="0"
+           url             ="%SWFPATH%/plugins/textfield.swf"
+           vcenter         ="true"
+           width           ="100%"
+           zorder          ="15"
+           />
+
+    <data name="tour_css">
+        h1 { color:#64E0FF;
+        font-family:arial;
+        font-size:18px;
+        text-align:center;
+        font-weight:normal;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        }
+        p { color:#64E0FF;
+        font-family:arial;
+        font-size:14px;
+        text-align:center;
+        font-weight:normal;
+        margin-left:10px;
+        margin-top: 10px;
+        }
+    </data>
+
+    <data name="item_css">
+        h1 { color:#64E0FF;
+        font-family:arial;
+        font-size:16px;
+        text-align:left;
+        font-weight:normal;
+        margin-left: 30px;
+        }
+    </data>
+
+</krpano>
