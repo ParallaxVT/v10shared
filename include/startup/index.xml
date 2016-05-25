@@ -21,6 +21,7 @@
         if(addnavarrows.enabled    == true, show_nav_arrows());
         if(addtitle.enabled        == true, add_title());
         if(addchangeviewbtn.enabled== true, add_change_view_btn());
+        if(addvisualiser.enabled   == true, add_interface());
         add_message();
         layer[ga].trackpageview(get(layer[panolist].pano[get(xml.scene)].title));
         );

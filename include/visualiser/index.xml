@@ -1,0 +1,245 @@
+<krpano version="1.18">
+
+    <addvisualiser enabled="true" />
+
+    <data name="seat_color">1</data>
+    <data name="background">a</data>
+
+    <action name="add_interface">
+        show_interface_btn();
+        if(layer[seat_btn_2],
+        set(layer[seat_btn_1].x,-135);
+        set(layer[seat_btn_2].x,-35);
+        set(layer[bg_btn].x,108);
+        );
+        if(layer[seat_btn_3],
+        set(layer[seat_btn_1].x,);
+        set(layer[seat_btn_2].x,);
+        set(layer[seat_btn_3].x,);
+        set(layer[bg_btn].x,180);
+        );
+        if(layer[seat_btn_4],
+        set(layer[seat_btn_1].x,-180);
+        set(layer[seat_btn_2].x,-108);
+        set(layer[seat_btn_3].x,-36);
+        set(layer[seat_btn_4].x,36);
+        set(layer[bg_btn].x,180);
+        );
+        if(layer[seat_btn_5],
+        set(layer[seat_btn_1].x,);
+        set(layer[seat_btn_2].x,);
+        set(layer[seat_btn_3].x,);
+        set(layer[seat_btn_4].x,);
+        set(layer[seat_btn_5].x,);
+        );
+        set(layer[bg_cont].x,get(layer[bg_btn].x));
+        if(scene.count GT 1,
+        set(layer[current_bg_btn].parent,bg_btn_1);
+        set(layer[current_bg_btn].visible,true);
+        set(layer[current_seat_btn].parent,seat_btn_1);
+        set(layer[current_seat_btn].visible,true);
+        );
+    </action>
+
+    <action name="hide_interface_btn">
+        check_and_close();
+        for(set(i,0), i LT layer.count, inc(i),
+        txtadd(layer_name,seat_btn_,get(i));
+        tween(layer[get(layer_name)].y,-100,.5,easeoutquad);
+        );
+        tween(layer[bg_btn].y,-100,.5,easeoutquad);
+    </action>
+
+    <action name="show_interface_btn">
+        tween(layer[bg_btn].y,50,.5,easeoutquad);
+        for(set(i,0), i LT layer.count, inc(i),
+        txtadd(layer_name,seat_btn_,get(i));
+        tween(layer[get(layer_name)].y,50,.5,easeoutquad);
+        );
+    </action>
+
+    <action name="check_and_close">
+        if(layer[bg_btn].status == on, hide_bg_btn());
+    </action>
+
+    <action name="show_bg_btn">
+        check_and_close();
+        set(layer[bg_btn].status,on);
+        set(layer[bg_btn].onclick,hide_bg_btn());
+        tween(layer[bg_btn_1].y,10,.3,easeoutquad);
+        tween(layer[bg_btn_2].y,80,.3,easeoutquad);
+        <!-- tween(layer[bg_btn_3].y,150,.3,easeoutquad); -->
+        if(layer[bg_btn_3], tween(layer[bg_btn_3].y,150,.3,easeoutquad));
+        if(bg_btn_4, tween(layer[bg_btn_4].y,220,.3,easeoutquad));
+        if(bg_btn_5, tween(layer[bg_btn_5].y,290,.3,easeoutquad));
+    </action>
+
+    <action name="hide_bg_btn">
+        set(layer[bg_btn].status,off);
+        set(layer[bg_btn].onclick,show_bg_btn());
+        tween(layer[bg_btn_1].y,-80,.3,easeoutquad);
+        tween(layer[bg_btn_2].y,-150,.3,easeoutquad);
+        tween(layer[bg_btn_3].y,-220,.3,easeoutquad);
+        <!-- if(bg_btn_3, tween(layer[bg_btn_3].y,-220,.3,easeoutquad)); -->
+        if(bg_btn_4, tween(layer[bg_btn_4].y,-290,.3,easeoutquad));
+        if(bg_btn_5, tween(layer[bg_btn_5].y,-360,.3,easeoutquad));
+    </action>
+
+    <action name="activatevisualiser">
+        <!-- Update selected button -->
+        txtadd(seat_no,seat_btn_,get(data[seat_color].content));
+        set(layer[current_seat_btn].parent,get(seat_no));
+        <!-- Update selected background -->
+        delayedcall(1,
+        if(data[background].content == a,
+        set(layer[current_bg_btn].parent,bg_btn_1);
+        );
+        if(data[background].content == b,
+        set(layer[current_bg_btn].parent,bg_btn_2);
+        );
+        if(data[background].content == c,
+        set(layer[current_bg_btn].parent,bg_btn_3);
+        );
+        );
+
+        check_and_close();
+        txtadd(loadscene,'scene_',get(data[seat_color].content),'_',get(data[background].content));
+        if(loadscene == scene_1_a, set(loadscene,get(scene[0].name)));
+        loadscene(get(loadscene),null,KEEPVIEW|MERGE,BLEND(1));
+
+    </action>
+
+    <action name="add_seat_btn">
+        addlayer(seat_btn_%1);
+        set(layer[seat_btn_%1].align,bottomcenter);
+        set(layer[seat_btn_%1].edge,bottomcenter);
+        set(layer[seat_btn_%1].handcursor,true);
+        set(layer[seat_btn_%1].keep,true);
+        set(layer[seat_btn_%1].onclick,set(data[seat_color].content,%1); activatevisualiser());
+        <!-- set(layer[seat_btn_%1].onhover,showtext(%2, hs_textstyle)); -->
+        set(layer[seat_btn_%1].url,%CURRENTXML%/btn_%2.jpg);
+        set(layer[seat_btn_%1].x,);
+        set(layer[seat_btn_%1].y,-100);
+        set(layer[seat_btn_%1].zorder,10);
+    </action>
+
+    <action name="add_bg_btn">
+        set(layer[bg_btn_%1].url,%SWFPATH%/include/visualiser/%2.jpg);
+    </action>
+
+    <layer name          ="bg_btn"
+           onclick       ="show_bg_btn();"
+           style         ="seat_btn_style"
+           url           ="%SWFPATH%/include/visualiser/bg_btn.jpg"
+           x             =""
+           />
+
+    <layer name          ="bg_cont"
+           align         ="bottomcentre"
+           edge          ="bottomcentre"
+           height        ="400"
+           keep          ="true"
+           maskchildren  ="true"
+           type          ="container"
+           width         ="100"
+           x             =""
+           y             ="100"
+           zorder        ="10">
+        <layer name    ="bg_btn_1"
+               onclick ="set(data[background].content,a); activatevisualiser();"
+               style   ="bg_btn_style"
+               url     ="%SWFPATH%/include/visualiser/bg_btn.jpg"
+               y       ="-80"
+               />
+               <!-- onhover ="showtext(Studio,hs_textstyle);" -->
+        <layer name    ="bg_btn_2"
+               onclick ="set(data[background].content,b); activatevisualiser();"
+               style   ="bg_btn_style"
+               url     ="%SWFPATH%/include/visualiser/bg_btn.jpg"
+               y       ="-150"
+               />
+               <!-- onhover ="showtext(Plaza,hs_textstyle);" -->
+        <layer name    ="bg_btn_3"
+               onclick ="set(data[background].content,c); activatevisualiser();"
+               style   ="bg_btn_style"
+               url     ="%SWFPATH%/include/visualiser/bg_btn.jpg"
+               y       ="-220"
+               />
+               <!-- onhover ="showtext(Forest,hs_textstyle);" -->
+    </layer>
+
+    <layer name       ="current_bg_btn"
+           align      ="centre"
+           edge       ="current"
+           handcursor ="false"
+           keep       ="true"
+           parent     ="bg_btn_1"
+           url        ="%SWFPATH%/include/visualiser/current_bg_btn.png"
+           visible    = "false"
+           x          =""
+           y          =""
+           zorder     ="1"
+           />
+
+    <layer name       ="current_seat_btn"
+           align      ="centre"
+           edge       ="current"
+           handcursor ="false"
+           keep       ="true"
+           parent     ="seat_btn_1"
+           url        ="%SWFPATH%/include/visualiser/current_seat_btn.png"
+           visible    = "false"
+           x          ="-1"
+           y          ="-1"
+           zorder     ="1"
+           />
+
+    <style name   ="bg_btn_style"
+           align  ="bottomcentre"
+           edge   ="bottomcentre"
+           keep   ="true"
+           x      ="0"
+           zorder ="10"
+           />
+
+    <style name   ="seat_btn_style"
+           align  ="bottomcentre"
+           edge   ="bottomcentre"
+           keep   ="true"
+           y      ="-100"
+           zorder ="10"
+           />
+
+    <textstyle name            ="hs_textstyle"
+               alpha           ="1"
+               background      ="true"
+               backgroundcolor ="0xffffff"
+               blendmode       ="normal"
+               bold            ="false"
+               border          ="false"
+               bordercolor     ="0x000000"
+               edge            ="bottom"
+               effect          =""
+               font            ="Arial"
+               fontsize        ="14"
+               italic          ="false"
+               origin          ="cursor"
+               padding         ="5 10"
+               roundedge       ="20"
+               textalign       ="center"
+               textcolor       ="0x000000"
+               width           ="150"
+               xoffset         ="0"
+               yoffset         ="-10"
+               />
+
+    <data name="hotspot_css">
+        p { color:#ffffff;
+        font-family:verdana;
+        font-weight:normal;
+        font-size:12px;
+        text-align:center;
+        }
+    </data>
+
+</krpano>
