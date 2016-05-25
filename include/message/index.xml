@@ -2,11 +2,23 @@
 
     <action name="add_message">
         tween(layer[message].y,0,.5,easeoutquad);
+        if(xml.scene == gb_isuzu_fury_leather-seats, set(layer[message].url,'%SWFPATH%/include/message/message_isuzu-fury.png'));
+        if(xml.scene == gb_isuzu_fury_standard-including-branded-mats, set(layer[message].url,'%SWFPATH%/include/message/message_isuzu-fury.png'));
     </action>
 
     <action name="hide_message">
-        tween(layer[message].y,-50,.5,easeoutquad);
+        tween(layer[message].y,-70,.5,easeoutquad);
         if(device.mobile,tween(layer[message].y,-100,.5,easeoutquad));
+    </action>
+
+    <events name="gui_skin" keep="true" devices="mobile" onresize="message_onresize();" />
+
+    <action name="message_onresize">
+        if(stagewidth LE 600,
+        set(layer[message].scale,1.4);
+        ,
+        set(layer[message].scale,1.6);
+        );
     </action>
 
     <layer name        ="message"
@@ -21,9 +33,9 @@
            status      ="shown"
            url         ="%SWFPATH%/include_brand/message/message.png"
            visible     ="true"
-           y           ="-50"
+           y           ="-70"
            zorder      ="1"
-           onloaded    ="if(device.mobile,set(layer[message].scale,1.6));"
+           onloaded    ="if(device.mobile, message_onresize());"
            />
 
 </krpano>
