@@ -39,6 +39,9 @@
         set(layer[current_seat_btn].parent,seat_btn_1);
         set(layer[current_seat_btn].visible,true);
         );
+        if (bg_btn_1 != True,
+        removelayer(current_seat_btn);
+        );
     </action>
 
     <action name="hide_interface_btn">
