@@ -13,10 +13,10 @@
         set(layer[bg_btn].x,108);
         );
         if(layer[seat_btn_3],
-        set(layer[seat_btn_1].x,);
-        set(layer[seat_btn_2].x,);
-        set(layer[seat_btn_3].x,);
-        set(layer[bg_btn].x,180);
+        set(layer[seat_btn_1].x,-176);
+        set(layer[seat_btn_2].x,-76);
+        set(layer[seat_btn_3].x,24);
+        set(layer[bg_btn].x,166);
         );
         if(layer[seat_btn_4],
         set(layer[seat_btn_1].x,-180);
