@@ -1,0 +1,6 @@
+<krpano>
+<!-- Prevent errors for missing functions -->
+<!--This functions are for visualiser cars, but they're not supported in 'Grid View'-->
+<action name="add_seat_btn">set(abc,abc);</action>
+<action name="add_bg_btn">set(def,def);</action>
+</krpano>
