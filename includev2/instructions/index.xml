@@ -1,0 +1,60 @@
+<krpano>
+
+    <action name="show_instructions">
+        tween(layer[instructions].alpha,1,.5,smooth);
+        delayedcall(5,
+            set(layer[instructions_close_btn].enabled,false);
+            tween(layer[instructions].alpha,0,0.5,smooth);
+            delayedcall(1,
+                removelayer(instructions);
+                removelayer(instructions_close_btn);
+            );
+        );
+    </action>
+
+    <layer name="instructions"
+            align="centertop"
+            alpha="0"
+            autoalpha ="true"
+            crop="0|0|700|360"
+            devices="desktop"
+            handcursor="false"
+            keep="true"
+            scale=".5"
+            scalechildren="true"
+            onclick="remove_instructions();"
+            url="%SWFPATH%/includev2/instructions/instructions.png"
+            zorder="15"
+            y="30%"
+            />
+
+    <layer name="instructions_close_btn"
+            align="righttop"
+            crop="700|0|60|60"
+            devices="desktop"
+            edge="righttop"
+            keep="true"
+            onclick ="remove_instructions();"
+            parent="instructions"
+            url="%SWFPATH%/includev2/instructions/instructions.png"
+            x="20"
+            y="20"
+            zorder="20"
+            />
+
+    <layer name="instructions"
+           align="centertop"
+           alpha="0"
+           autoalpha="true"
+           crop="0|0|620|360"
+           devices="handheld"
+           edge="centertop"
+           keep="true"
+           onclick="remove_instructions();"
+           url="%SWFPATH%/includev2/instructions/instructions_touch.png"
+           scale=".5"
+           y="30%"
+           zorder="10"
+           />
+
+</krpano>
