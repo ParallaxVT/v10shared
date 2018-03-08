@@ -2,38 +2,42 @@
 
     <action name="show_full_screen_btn">
         tween(layer[fullscreen_btn].y,20,.5,easeoutquad);
-        if(device.mobile,trace(mobile); showlog();
     </action>
 
     <action name="hide_full_screen_btn">
-        tween(layer[fullscreen_btn].y,get(hide-y),.5,easeoutquad);
+        tween(layer[fullscreen_btn].y,get(hide-y),.5,easeinquad);
     </action>
 
     <layer name="fullscreen_btn"
-           align.normal="bottomright"
-           align.mobile="topright"
+           align="topright"
            children="false"
-           crop.mobile="0|0|100|100"
-           crop.normal="0|0|300|70"
+           crop="0|0|90|90"
            devices="fullscreensupport"
            first_time="true"
            handcursor="true"
            keep="true"
-           onclick="switch(fullscreen);
-                    switch(layer[fullscreen_btn].crop,0|0|300|70, 0|70|300|70);
-                    switch(layer[fullscreen_btn].onovercrop,300|0|300|70, 300|70|300|70);"
-           onclick.mobile="switch(fullscreen);
-                           switch(layer[fullscreen_btn].crop,0|0|100|100, 100|0|100|100);"
+           onclick="switch(fullscreen);"
            onloaded="set(y,calc(0 - pixelheight)); set(visible,true); copy(hide-y,y);"
-           onovercrop="300|0|300|70"
+           onhover="showtext(Enter Fullscreen,css_top);"
+           onovercrop="90|0|90|90"
+           ondowncrop="90|0|90|90"
            scale=".5"
            url="%SWFPATH%/includev2/fullscreen/fs.png"
-           url.mobile="%SWFPATH%/includev2/fullscreen/fs_mobile.png"
            visible="false"
            x="20"
            zorder="10"
            />
 
-    />
+        <events onenterfullscreen="set(plugin[fullscreen_btn].crop,0|90|90|90);
+                               set(plugin[fullscreen_btn].onovercrop,90|90|90|90);
+                               set(plugin[fullscreen_btn].ondowncrop,90|90|90|90);
+                               set(layer[fullscreen_btn].onhover,showtext(Exit Fullscreen,css_top));
+                               "
+            onexitfullscreen="set(plugin[fullscreen_btn].crop,0|0|90|90);
+                              set(plugin[fullscreen_btn].onovercrop,90|0|90|90);
+                              set(plugin[fullscreen_btn].ondowncrop,90|0|90|90);
+                              set(layer[fullscreen_btn].onhover,showtext(Enter Fullscreen,css_top));
+                              "
+            />
 
 </krpano>
