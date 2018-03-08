@@ -1,0 +1,39 @@
+<krpano>
+
+    <action name="show_full_screen_btn">
+        tween(layer[fullscreen_btn].y,20,.5,easeoutquad);
+        if(device.mobile,trace(mobile); showlog();
+    </action>
+
+    <action name="hide_full_screen_btn">
+        tween(layer[fullscreen_btn].y,get(hide-y),.5,easeoutquad);
+    </action>
+
+    <layer name="fullscreen_btn"
+           align.normal="bottomright"
+           align.mobile="topright"
+           children="false"
+           crop.mobile="0|0|100|100"
+           crop.normal="0|0|300|70"
+           devices="fullscreensupport"
+           first_time="true"
+           handcursor="true"
+           keep="true"
+           onclick="switch(fullscreen);
+                    switch(layer[fullscreen_btn].crop,0|0|300|70, 0|70|300|70);
+                    switch(layer[fullscreen_btn].onovercrop,300|0|300|70, 300|70|300|70);"
+           onclick.mobile="switch(fullscreen);
+                           switch(layer[fullscreen_btn].crop,0|0|100|100, 100|0|100|100);"
+           onloaded="set(y,calc(0 - pixelheight)); set(visible,true); copy(hide-y,y);"
+           onovercrop="300|0|300|70"
+           scale=".5"
+           url="%SWFPATH%/includev2/fullscreen/fs.png"
+           url.mobile="%SWFPATH%/includev2/fullscreen/fs_mobile.png"
+           visible="false"
+           x="20"
+           zorder="10"
+           />
+
+    />
+
+</krpano>
