@@ -1,0 +1,51 @@
+<krpano>
+
+    <action name="show_gyro_btn">
+        if(layer[fullscreen_btn],
+            set(layer[gyro_btn].x,calc(layer[fullscreen_btn].x + 60));
+        );
+        tween(layer[gyro_btn].y,20,.5,easeoutquad);
+    </action>
+
+    <action name="hide_gyro_btn">
+        tween(layer[gyro_btn].y,get(hide-y),.5,easeinquad);
+    </action>
+
+    <action name="switch_gyro">
+        if(layer[gyro].enabled == true,
+            set(layer[gyro].enabled,false);
+            set(layer[gyro_btn].crop,0|90|90|90);
+            set(layer[gyro_btn].onovercrop,90|90|90|90);
+        ,
+            set(layer[gyro].enabled,true);
+            set(layer[gyro_btn].crop,0|0|90|90);
+            set(layer[gyro_btn].onovercrop,90|0|90|90);
+        );
+    </action>
+
+    <layer name="gyro"
+           camroll="true"
+           devices="handheld"
+           enabled="false"
+           friction=".5"
+           keep="true"
+           url="%SWFPATH%/plugins/gyro.js"
+           velastic=".2"
+           onavailable="set(enabled,true); set(layer[gyro_btn].visible,true);"
+           />
+
+    <layer name="gyro_btn"
+            align="topright"
+            crop="0|0|90|90"
+            devices="handheld"
+            keep="true"
+            onclick="switch_gyro();"
+            onloaded="set(y,calc(0 - pixelheight)); copy(hide-y,y);"
+            ondowncrop="90|0|90|90"
+            scale=".5"
+            url="%SWFPATH%/includev2/gyro/gyro_btn.png"
+            visible="false"
+            x="20"
+           />
+
+</krpano>
