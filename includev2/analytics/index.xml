@@ -1,0 +1,11 @@
+<krpano>
+    <layer name="ga"
+           account="UA-43543211-2"
+           debug="false"
+           keep="true"
+           mode="manual"
+           preload="true"
+           url.flash="%SWFPATH%/plugins/analytics.swf"
+           url.html5="%SWFPATH%/plugins/analytics.js"
+           />
+</krpano>
