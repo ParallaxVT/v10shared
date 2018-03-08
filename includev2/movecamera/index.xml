@@ -1,0 +1,28 @@
+<krpano>
+
+    <action name="movecamera">
+        if(develmode.enabled == true,
+            set(view.hlookat, %1);
+            set(view.vlookat, %2);
+            set(view.fov, get(view.fov));
+        ,
+            mul(randomvalue, random, 1);
+            add(thevalue,randomvalue, 1);
+            roundval(thevalue, 0);
+            set(end_h, %1);
+            set(end_v, %2);
+            if (thevalue == "1",
+                sub(begin, get(end_h), 70);
+            ,
+                add(begin, get(end_h), 70);
+            );
+            set(view.hlookat, get(begin));
+            set(view.vlookat, 10);
+            set(view.fov, get(view.fov));
+            tween(view.hlookat, get(end_h), 3, smooth);
+            tween(view.vlookat, get(end_v), 3, smooth);
+        );
+    </action>
+
+</krpano>
+
