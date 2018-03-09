@@ -2,13 +2,15 @@
 
     <action name="show_instructions">
         tween(layer[instructions].alpha,1,.5,smooth);
-        delayedcall(5,
-            set(layer[instructions_close_btn].enabled,false);
-            tween(layer[instructions].alpha,0,0.5,smooth);
-            delayedcall(1,
-                removelayer(instructions);
-                removelayer(instructions_close_btn);
-            );
+        delayedcall(5, remove_instructions());
+    </action>
+
+    <action name="remove_instructions">
+        set(layer[instructions_close_btn].enabled,false);
+        tween(layer[instructions].alpha,0,0.5,smooth);
+        delayedcall(1,
+            removelayer(instructions);
+            removelayer(instructions_close_btn);
         );
     </action>
 
@@ -34,7 +36,7 @@
             devices="desktop"
             edge="righttop"
             keep="true"
-            onclick ="remove_instructions();"
+            onclick="remove_instructions();"
             parent="instructions"
             url="%SWFPATH%/includev2/instructions/instructions.png"
             x="20"
