@@ -1,11 +1,11 @@
 <krpano>
 
     <action name="show_full_screen_btn">
-        tween(layer[fullscreen_btn].y,20,.5,easeoutquad);
+        tween(layer[fullscreen_btn].y,get(yval),.5,easeoutquad);
     </action>
 
     <action name="hide_full_screen_btn">
-        tween(layer[fullscreen_btn].y,get(hide-y),.5,easeinquad);
+        tween(layer[fullscreen_btn].y,get(hide-fs),.5,easeinquad);
     </action>
 
     <layer name="fullscreen_btn"
@@ -17,14 +17,15 @@
            handcursor="true"
            keep="true"
            onclick="switch(fullscreen);"
-           onloaded="set(y,calc(0 - pixelheight)); set(visible,true); copy(hide-y,y);"
+           onloaded="set(y,calc(0 - pixelheight)); set(visible,true); copy(hide-fs,y);"
            onhover="showtext(Enter Fullscreen,css_top);"
            onovercrop="90|0|90|90"
            ondowncrop="90|0|90|90"
            scale=".5"
            url="%SWFPATH%/includev2/fullscreen/fs.png"
            visible="false"
-           x="20"
+           x.mobile="15"
+           x.normal="20"
            zorder="10"
            />
 
