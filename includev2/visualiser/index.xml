@@ -39,8 +39,8 @@
             set(layer[current_seat_btn].parent,seat_btn_1);
             set(layer[current_seat_btn].visible,true);
         );
-        if (bg_btn_1 === null,
-        removelayer(current_seat_btn);
+        if (layer[bg_btn_1] === null,
+            removelayer(current_seat_btn);
         );
     </action>
 
