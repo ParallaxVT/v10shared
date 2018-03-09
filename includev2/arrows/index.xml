@@ -1,11 +1,11 @@
 <krpano>
 
     <action name="show_nav_arrows">
-        tween(layer[arrows_container].x,18,.5,easeoutquad);
+        tween(layer[arrows_container].x,get(yval),.5,easeoutquad);
     </action>
 
     <action name="hide_nav_arrows">
-        tween(layer[arrows_container].x,get(hide-x),.5,easeinquad);
+        tween(layer[arrows_container].x,get(hide-arr),.5,easeinquad);
     </action>
 
     <layer name="arrows_container"
@@ -18,7 +18,7 @@
            handcursor="false"
            height="62"
            keep="true"
-           onloaded="set(x,calc(0 - pixelwidth)); copy(hide-x,x);"
+           onloaded="set(x,calc(0 - pixelwidth)); copy(hide-arr,x);"
            scale=".5"
            scalechildren="true"
            type="container"
