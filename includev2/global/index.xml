@@ -8,7 +8,7 @@
         loadscene(%1, null, MERGE);
         movecamera_%1();
         delayedcall(1,
-        if(device.mobile,set(yval,15); , set(yval,20));
+            if(device.mobile,set(yval,15); , set(yval,20));
             if(device.handheld, show_gyro_btn());
             show_instructions();
             if(device.fullscreensupport,show_full_screen_btn());
