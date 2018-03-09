@@ -4,7 +4,7 @@
         if(layer[fullscreen_btn],
             set(layer[gyro_btn].x,calc(layer[fullscreen_btn].x + 60));
         );
-        tween(layer[gyro_btn].y,20,.5,easeoutquad);
+        tween(layer[gyro_btn].y,15,.5,easeoutquad);
     </action>
 
     <action name="hide_gyro_btn">
@@ -45,7 +45,7 @@
             scale=".5"
             url="%SWFPATH%/includev2/gyro/gyro_btn.png"
             visible="false"
-            x="20"
+            x="15"
            />
 
 </krpano>
