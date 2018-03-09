@@ -1,0 +1,28 @@
+<krpano>
+
+    <action name="show_message">
+        tween(layer[message].y,get(yval),.5,easeoutquad);
+    </action>
+
+    <action name="hide_message">
+        tween(layer[message].y,get(hide-mes),.5,easeinquad);
+    </action>
+
+    <layer name="message"
+            align="bottomcenter"
+            alpha=".8"
+            background="false"
+            bgcolor="0xdddddd"
+            css="color:#FFFFFF; font-family:Arial; font-size:16px; text-align:center;"
+            handcursor="true"
+            html="Model shown is for illustrative purposes only"
+            interactivecontent="true"
+            keep="true"
+            onclick="hide_message();"
+            onautosized="set(y,calc(0 - pixelheight)); set(visible,true); copy(hide-mes,y);"
+            url="%SWFPATH%/plugins/textfield.swf"
+            visible="false"
+            zorder="20"
+           />
+
+</krpano>
