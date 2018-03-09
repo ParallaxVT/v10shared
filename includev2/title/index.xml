@@ -1,0 +1,36 @@
+<krpano>
+
+    <events name="resize-text" keep="true" onresize="resize-text" />
+
+    <action name="add_title">
+        set(layer[title].html,get(layer[panolist].pano[get(xml.scene)].title));
+        tween(layer[title].y,get(yval),.5,easeoutquad);
+    </action>
+
+    <action name="resize-text">
+        if(stagewidth LT layer[title].width,
+            set(layer[title].width,get(stagewidth));
+            if(device.mobile,set(layer[title].visible,false));
+        ,
+            set(layer[title].width,500);
+            if(device.mobile,set(layer[title].visible,true));
+        );
+    </action>
+
+    <layer name="title"
+            align="centertop"
+            vcenter="true"
+            background="false"
+            bgcolor="0xdddddd"
+            capture="false"
+            css="color:#FFFFFF; font-family:Arial; font-size:16px; text-align:center; font-weight:bold;"
+            handcursor="false"
+            keep="true"
+            onautosized="set(y,calc(0 - pixelheight)); set(visible,true); if(device.mobile,set(layer[title].visible,false));"
+            url="%SWFPATH%/plugins/textfield.swf"
+            visible="false"
+            zorder="10"
+            width="500"
+            />
+
+</krpano>
