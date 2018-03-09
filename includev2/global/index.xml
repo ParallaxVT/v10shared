@@ -14,7 +14,7 @@
             if(device.fullscreensupport,show_full_screen_btn());
             if(device.normal,show_nav_arrows());
             add_title();
-            add_interface();
+            if(addvisualiser.enabled  == true, add_interface());
             show_message();
             layer[ga].trackpageview(get(layer[panolist].pano[get(xml.scene)].title));
         );

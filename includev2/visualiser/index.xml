@@ -1,41 +1,43 @@
 <krpano>
 
+    <addvisualiser enabled="true" />
+
     <data name="seat_color">1</data>
     <data name="background">a</data>
 
     <action name="add_interface">
         show_interface_btn();
         if(layer[seat_btn_2],
-        set(layer[seat_btn_1].x,-135);
-        set(layer[seat_btn_2].x,-35);
-        set(layer[bg_btn].x,108);
+            set(layer[seat_btn_1].x,-135);
+            set(layer[seat_btn_2].x,-35);
+            set(layer[bg_btn].x,108);
         );
         if(layer[seat_btn_3],
-        set(layer[seat_btn_1].x,-176);
-        set(layer[seat_btn_2].x,-76);
-        set(layer[seat_btn_3].x,24);
-        set(layer[bg_btn].x,166);
+            set(layer[seat_btn_1].x,-176);
+            set(layer[seat_btn_2].x,-76);
+            set(layer[seat_btn_3].x,24);
+            set(layer[bg_btn].x,166);
         );
         if(layer[seat_btn_4],
-        set(layer[seat_btn_1].x,-180);
-        set(layer[seat_btn_2].x,-108);
-        set(layer[seat_btn_3].x,-36);
-        set(layer[seat_btn_4].x,36);
-        set(layer[bg_btn].x,180);
+            set(layer[seat_btn_1].x,-180);
+            set(layer[seat_btn_2].x,-108);
+            set(layer[seat_btn_3].x,-36);
+            set(layer[seat_btn_4].x,36);
+            set(layer[bg_btn].x,180);
         );
         if(layer[seat_btn_5],
-        set(layer[seat_btn_1].x,);
-        set(layer[seat_btn_2].x,);
-        set(layer[seat_btn_3].x,);
-        set(layer[seat_btn_4].x,);
-        set(layer[seat_btn_5].x,);
+            set(layer[seat_btn_1].x,);
+            set(layer[seat_btn_2].x,);
+            set(layer[seat_btn_3].x,);
+            set(layer[seat_btn_4].x,);
+            set(layer[seat_btn_5].x,);
         );
         set(layer[bg_cont].x,get(layer[bg_btn].x));
         if(scene.count GT 1,
-        set(layer[current_bg_btn].parent,bg_btn_1);
-        set(layer[current_bg_btn].visible,true);
-        set(layer[current_seat_btn].parent,seat_btn_1);
-        set(layer[current_seat_btn].visible,true);
+            set(layer[current_bg_btn].parent,bg_btn_1);
+            set(layer[current_bg_btn].visible,true);
+            set(layer[current_seat_btn].parent,seat_btn_1);
+            set(layer[current_seat_btn].visible,true);
         );
     </action>
 
