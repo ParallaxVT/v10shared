@@ -1,0 +1,59 @@
+﻿<krpano>
+
+    <events name="new_event" keep="true" onnewpano="trace(Scene name:, get(xml.scene));" />
+
+    <action name="mobilescale" autorun="preinit" devices="mobile">mul(stagescale,2);</action>
+
+    <action name="activatepano">
+        loadscene(%1, null, MERGE);
+        movecamera_%1();
+        delayedcall(1,
+        if(device.mobile,set(yval,15); , set(yval,20));
+            if(device.handheld, show_gyro_btn());
+            show_instructions();
+            if(device.fullscreensupport,show_full_screen_btn());
+            if(device.normal,show_nav_arrows());
+            add_title();
+            add_interface();
+            show_message();
+            layer[ga].trackpageview(get(layer[panolist].pano[get(xml.scene)].title));
+        );
+    </action>
+
+    <view hlookat="0" vlookat="0" fov="100" fovmin="40" fovmax="110" fovtype="MFOV" />
+
+    <autorotate enabled="false" waittime="7" horizon="off" speed="6"/>
+
+    <control mousefovchange="0" mousetype="drag2d" />
+
+    <security cors="anonymous ">
+        <crossdomainxml url="https://s3-eu-west-1.amazonaws.com/autofs/interiors/crossdomain.xml" />
+        <allowdomain domain="*" />
+    </security>
+
+    <contextmenu fullscreen="false" versioninfo="false">
+        <item name="build" caption="Built by GForces" onclick="openurl(http://www.gforces.co.uk);" />
+    </contextmenu>
+
+    <control keycodesin="107" keycodesout="109" />
+
+    <textstyle name            ="css_top"
+               background      ="true"
+               backgroundcolor ="0xffffff"
+               bold            ="false"
+               border          ="false"
+               edge            ="bottom"
+               font            ="Arial"
+               fontsize        ="14"
+               italic          ="false"
+               origin          ="cursor"
+               padding         ="5 10"
+               roundedge       ="20"
+               textalign       ="center"
+               textcolor       ="0x000000"
+               width           ="150"
+               xoffset         ="0"
+               yoffset         ="50"
+               />
+
+</krpano>
