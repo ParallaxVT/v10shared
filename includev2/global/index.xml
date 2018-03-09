@@ -7,6 +7,7 @@
     <action name="activatepano">
         loadscene(%1, null, MERGE);
         movecamera_%1();
+        if(develmode.enabled === null,set(logkey,false));
         delayedcall(1,
             if(device.mobile,set(yval,15); , set(yval,20));
             if(device.handheld, show_gyro_btn());
