@@ -4,7 +4,7 @@
         if(layer[fullscreen_btn],
             set(layer[gyro_btn].x,calc(layer[fullscreen_btn].x + 60));
         );
-        tween(layer[gyro_btn].y,15,.5,easeoutquad);
+        tween(layer[gyro_btn].y,get(yval),.5,easeoutquad);
     </action>
 
     <action name="hide_gyro_btn">
