@@ -24,13 +24,10 @@
     </action>
 
     <layer name="gyro"
-           camroll="true"
-           devices="handheld"
+           devices="html5"
            enabled="false"
-           friction=".5"
            keep="true"
-           url="%SWFPATH%/plugins/gyro.js"
-           velastic=".2"
+           url="%SWFPATH%/plugins/gyro2.js"
            onavailable="set(enabled,true); set(layer[gyro_btn].visible,true);"
            />
 
