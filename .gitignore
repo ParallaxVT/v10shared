@@ -1,3 +1,4 @@
+include/gyro/*.js
 plugins/
 tour.js
 tour.swf
