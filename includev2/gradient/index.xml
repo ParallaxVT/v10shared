@@ -1,25 +1,26 @@
 <krpano>
-    <layer name="gradient-top"
-            align="centretop"
-            style="gradient-style"
-            url="%SWFPATH%/includev2/gradient/gradient.png"
-    />
+  <layer name="gradient-top"
+          align="centretop"
+          style="gradient-style"
+          url="%SWFPATH%/includev2/gradient/gradient.png"
+          height="200"
+  />
 
-    <layer name="gradient-bottom"
-            align="bottomcentre"
-            rotate="180"
-            style="gradient-style"
-            url="%SWFPATH%/includev2/gradient/gradient.png"
-            y="200"
-    />
+  <layer name="gradient-bottom"
+          align="bottomcentre"
+          edge="topcentre"
+          height="100"
+          rotate="180"
+          style="gradient-style"
+          url="%SWFPATH%/includev2/gradient/gradient.png"
+  />
 
-    <style name="gradient-style"
-            alpha=".75"
-            capture="false"
-            enabled="false"
-            handcursor="false"
-            height="200"
-            keep="true"
-            width="100%"
-    />
+  <style name="gradient-style"
+          alpha=".75"
+          capture="false"
+          enabled="false"
+          handcursor="false"
+          keep="true"
+          width="100%"
+  />
 </krpano>

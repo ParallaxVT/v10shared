@@ -16,7 +16,7 @@
            bgcolor="0xcccccc"
            devices="normal"
            handcursor="false"
-           height="62"
+           height="690"
            keep="true"
            onloaded="set(x,calc(0 - pixelwidth)); copy(hide-arr,x);"
            scale=".5"
