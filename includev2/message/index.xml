@@ -23,10 +23,11 @@
             interactivecontent="true"
             keep="true"
             onclick="hide_message();"
-            onautosized="set(y,calc(0 - pixelheight)); set(visible,true); copy(hide-mes,y);"
+            onautosized="if(visible, false, set(y,calc(0 - pixelheight)); set(visible,true); copy(hide-mes,y));"
             url="%SWFPATH%/plugins/textfield.swf"
             visible="false"
             zorder="20"
+            width="320"
            />
 
 </krpano>

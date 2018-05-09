@@ -17,7 +17,6 @@
     <layer name="instructions"
             align="centertop"
             alpha="0"
-            autoalpha ="true"
             crop="0|0|700|360"
             devices="desktop"
             handcursor="false"

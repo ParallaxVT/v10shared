@@ -6,7 +6,11 @@
 
     <action name="resize-stage">
         delayedcall(.2,
-            if(stageheight LT 345 AND stageheight GE 276,
+            <!-- HEIGHT -->
+            <!-- 276 = smallest height -->
+            <!-- 345 = arrows height at scale 1 -->
+            <!-- 276 < H > 345 -->
+            if(stageheight LE 345 AND stageheight GE 276,
                 set(layer[instructions].align,center); set(layer[instructions].y,0);
                 set(layer[gyro_btn].scale,.4);
                 set(layer[fullscreen_btn].scale,.4);
@@ -15,17 +19,77 @@
                 set(layer[title].visible,true);
                 if(device.normal,set(layer[title].y,10));
             );
-            if(stageheight LE 276,
+            <!-- H < 276 -->
+            if(stageheight LT 276,
                 set(layer[instructions].align,center); set(layer[instructions].y,0);
                 set(layer[arrows_container].visible,false);
                 set(layer[gradient-top].visible,false);
                 set(layer[title].visible,false);
             );
+            <!-- H > 345 -->
             if(stageheight GT 345,
                 set(layer[gyro_btn].scale,.5);
                 set(layer[fullscreen_btn].scale,.5);
-                set(layer[arrows_container].scale,.5);
+                set(layer[arrows_container].scale,.5); set(layer[arrows_container].visible,true);
                 if(device.normal,set(layer[title].y,20));
+            );
+            <!-- WIDTH -->
+            <!-- 340 = visualiser width at scale 1 -->
+            <!-- 280 = visualiser width at scale 0.4 -->
+            if(stagewidth LE 340 AND stagewidth GE 280,
+                set(layer[instructions].visible,true);
+                set(layer[instructions].scale,.4);
+                set(layer[visualiser].visible,true);
+                set(layer[visualiser].scale,.8);
+                set(layer[message].alpha,0.7);
+                set(layer[message].css, color:#FFFFFF; font-family:Arial; font-size:14px; text-align:center;);
+                set(layer[fullscreen_btn].scale,.4);
+                set(layer[arrows_container].visible,false);
+            );
+            <!-- W < 280  -->
+            <!-- Too small. Hide everything -->
+            if(stagewidth LT 280,
+                set(layer[instructions].visible,false);
+                set(layer[visualiser].visible,false);
+                set(layer[message].alpha,0);
+                set(layer[fullscreen_btn].scale,.4);
+                set(layer[arrows_container].visible,false);
+            );
+            <!-- W > 340 -->
+            if(stagewidth GT 340,
+                set(layer[instructions].scale,.5);
+                set(layer[instructions].visible,true);
+                set(layer[visualiser].scale,1);
+                set(layer[visualiser].visible,true);
+                set(layer[message].css, color:#FFFFFF; font-family:Arial; font-size:16px; text-align:center;);
+                set(layer[message].alpha,0.7);
+                <!-- W > 340 AND H > 345 -->
+                if(stageheight GT 345,
+                    set(layer[fullscreen_btn].scale,.5);
+                ,
+                    set(layer[fullscreen_btn].scale,.4);
+                );
+                <!-- Set minimum width to hide the arrows -->
+                <!-- This minimum width is when the arrows overlaps the 1st visualiser button or the message -->
+                if(layer[arrows_container].scale == .5, set(minw, 475));
+                if(layer[arrows_container].scale == .4, set(minw, 455));
+                if(layer[seat_btn_1] === null, set(minw, 450));
+
+                if(stagewidth LT minw,
+                    set(layer[arrows_container].visible,false);
+                    ,
+                    set(layer[arrows_container].visible,true);
+                    if(stageheight LE 345 AND stageheight GE 276,
+                        set(layer[arrows_container].scale,.4);
+                    );
+                    if(stageheight GT 345,
+                        set(layer[arrows_container].scale,.5);
+                    );
+                );
+                <!-- Whatever happens, always hide the arrows if height is too small -->
+                if(stageheight LT 276,
+                    set(layer[arrows_container].visible,false);
+                );
             );
         );
     </action>

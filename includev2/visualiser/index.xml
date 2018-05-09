@@ -8,9 +8,9 @@
     <action name="add_interface">
         show_interface_btn();
         if(layer[seat_btn_2],
-            set(layer[seat_btn_1].x,-135);
-            set(layer[seat_btn_2].x,-35);
-            set(layer[bg_btn].x,108);
+            set(layer[seat_btn_1].x,-140);
+            set(layer[seat_btn_2].x,-40);
+            set(layer[bg_btn].x,106);
         );
         if(layer[seat_btn_3],
             set(layer[seat_btn_1].x,-176);
@@ -45,20 +45,11 @@
     </action>
 
     <action name="hide_interface_btn">
-        check_and_close();
-        for(set(i,0), i LT layer.count, inc(i),
-            txtadd(layer_name,seat_btn_,get(i));
-            tween(layer[get(layer_name)].y,get(hide-seatbtn),.5,easeinquad);
-        );
-        tween(layer[bg_btn].y,get(hide-bgbtn),.5,easeinquad);
+        tween(layer[visualiser].y,get(hide-visualiser),.5,easeinquad);
     </action>
 
     <action name="show_interface_btn">
-        tween(layer[bg_btn].y,50,.5,easeoutquad);
-        for(set(i,0), i LT layer.count, inc(i),
-            txtadd(layer_name,seat_btn_,get(i));
-            tween(layer[get(layer_name)].y,50,.5,easeoutquad);
-        );
+        tween(layer[visualiser].y,70,.5,easeoutquad);
     </action>
 
     <action name="check_and_close">
@@ -111,56 +102,73 @@
 
     <action name="add_seat_btn">
         addlayer(seat_btn_%1);
-        set(layer[seat_btn_%1].align,bottomcenter);
+        set(layer[seat_btn_%1].align,center);
         set(layer[seat_btn_%1].handcursor,true);
         set(layer[seat_btn_%1].keep,true);
         set(layer[seat_btn_%1].onclick,set(data[seat_color].content,%1); activatevisualiser());
-        set(layer[seat_btn_%1].onloaded,set(y,calc(0 - pixelheight)); copy(hide-seatbtn,y));
         set(layer[seat_btn_%1].url,%CURRENTXML%/btn_%2.jpg);
         set(layer[seat_btn_%1].zorder,10);
+        set(layer[seat_btn_%1].parent,visualiser);
+        set(layer[seat_btn_%1].y,2);
     </action>
 
     <action name="add_bg_btn">
         set(layer[bg_btn_%1].url,%SWFPATH%/includev2/visualiser/%2.jpg);
     </action>
 
+    <layer name          ="visualiser"
+           align         ="bottomcentre"
+           bgalpha       ="0"
+           bgcolor       ="0xdddd00"
+           edge          ="centre"
+           height        ="60"
+           keep          ="true"
+           maskchildren  ="false"
+           onloaded      ="set(y,calc(0 - pixelheight)); copy(hide-visualiser,y);"
+           scalechildren ="true"
+           type          ="container"
+           width         ="340"
+           x             ="0"
+           y             ="0"
+           zorder        ="10">
+
     <layer name="bg_btn"
-            align="bottomcentre"
-            edge="bottomcentre"
+            align="centre"
             keep="true"
             onclick="show_bg_btn();"
-            onloaded="set(y,calc(0 - pixelheight)); copy(hide-bgbtn,y);"
             url="%SWFPATH%/includev2/visualiser/bg_btn.jpg"
             zorder ="10"
            />
 
-    <layer name          ="bg_cont"
-           align         ="bottomcentre"
-           height        ="400"
-           keep          ="true"
-           maskchildren  ="true"
-           type          ="container"
-           width         ="100"
-           y             ="100"
-           zorder        ="10">
-        <layer name="bg_btn_1"
-               onclick="set(data[background].content,a); activatevisualiser();"
-               style="bg_btn_style"
-               url="%SWFPATH%/includev2/visualiser/bg_btn.jpg"
-               y="-80"
-               />
-        <layer name="bg_btn_2"
-               onclick="set(data[background].content,b); activatevisualiser();"
-               style="bg_btn_style"
-               url="%SWFPATH%/includev2/visualiser/bg_btn.jpg"
-               y="-150"
-               />
-        <layer name="bg_btn_3"
-               onclick="set(data[background].content,c); activatevisualiser();"
-               style="bg_btn_style"
-               url="%SWFPATH%/includev2/visualiser/bg_btn.jpg"
-               y="-220"
-               />
+        <layer name       ="bg_cont"
+            align         ="bottomcentre"
+            height        ="400"
+            keep          ="true"
+            maskchildren  ="true"
+            scalechildren ="true"
+            type          ="container"
+            width         ="100"
+            y             ="60"
+            zorder        ="10">
+            <layer name="bg_btn_1"
+                onclick="set(data[background].content,a); activatevisualiser();"
+                style="bg_btn_style"
+                url="%SWFPATH%/includev2/visualiser/bg_btn.jpg"
+                y="-80"
+                />
+            <layer name="bg_btn_2"
+                onclick="set(data[background].content,b); activatevisualiser();"
+                style="bg_btn_style"
+                url="%SWFPATH%/includev2/visualiser/bg_btn.jpg"
+                y="-150"
+                />
+            <layer name="bg_btn_3"
+                onclick="set(data[background].content,c); activatevisualiser();"
+                style="bg_btn_style"
+                url="%SWFPATH%/includev2/visualiser/bg_btn.jpg"
+                y="-220"
+                />
+            </layer>
     </layer>
 
     <layer name="current_bg_btn"
