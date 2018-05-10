@@ -36,22 +36,40 @@
             <!-- WIDTH -->
             <!-- 340 = visualiser width at scale 1 -->
             <!-- 280 = visualiser width at scale 0.4 -->
+            <!-- 217 = visualiser width at scale 0.4 AND reduced padding -->
             if(stagewidth LE 340 AND stagewidth GE 280,
                 set(layer[instructions].visible,true);
                 set(layer[instructions].scale,.4);
                 set(layer[visualiser].visible,true);
                 set(layer[visualiser].scale,.8);
-                set(layer[message].alpha,0.7);
+                set(layer[seat_btn_1].x,-140);
+                set(layer[seat_btn_2].x,-40);
+                set(layer[bg_btn].x,106);
+                set(layer[message].visible,true);
+                set(layer[message].width,320);
                 set(layer[message].css, color:#FFFFFF; font-family:Arial; font-size:14px; text-align:center;);
                 set(layer[fullscreen_btn].scale,.4);
                 set(layer[arrows_container].visible,false);
             );
             <!-- W < 280  -->
-            <!-- Too small. Hide everything -->
-            if(stagewidth LT 280,
-                set(layer[instructions].visible,false);
+            <!-- Too small. Everything -->
+            if(stagewidth LT 217,
                 set(layer[visualiser].visible,false);
-                set(layer[message].alpha,0);
+                set(layer[message].width,180);
+                removelayer(instructions);
+                removelayer(instructions_close_btn);
+                set(layer[arrows_container].visible,false);
+            );
+            <!-- 217 < W >280 -->
+            if(stagewidth LT 280 AND stagewidth GE 217,
+                set(layer[instructions].scale,.4);
+                set(layer[visualiser].visible,true);
+                set(layer[visualiser].scale,.8);
+                set(layer[seat_btn_1].x,-105);
+                set(layer[seat_btn_2].x,-34);
+                set(layer[bg_btn].x,71);
+                set(layer[message].visible,true);
+                set(layer[message].width,180);
                 set(layer[fullscreen_btn].scale,.4);
                 set(layer[arrows_container].visible,false);
             );
@@ -61,8 +79,12 @@
                 set(layer[instructions].visible,true);
                 set(layer[visualiser].scale,1);
                 set(layer[visualiser].visible,true);
+                set(layer[seat_btn_1].x,-140);
+                set(layer[seat_btn_2].x,-40);
+                set(layer[bg_btn].x,106);
+                set(layer[message].visible,true);
                 set(layer[message].css, color:#FFFFFF; font-family:Arial; font-size:16px; text-align:center;);
-                set(layer[message].alpha,0.7);
+                set(layer[message].width,320);
                 <!-- W > 340 AND H > 345 -->
                 if(stageheight GT 345,
                     set(layer[fullscreen_btn].scale,.5);
@@ -98,6 +120,7 @@
         loadscene(%1, null, MERGE);
         movecamera_%1();
         if(develmode.enabled === null,set(logkey,false));
+        if(addvisualiser.enabled  == true, add_interface());
         delayedcall(1,
             if(device.mobile,set(yval,15); , set(yval,20));
             if(device.handheld, show_gyro_btn());
@@ -105,7 +128,7 @@
             if(device.fullscreensupport,show_full_screen_btn());
             if(device.normal,show_nav_arrows());
             add_title();
-            if(addvisualiser.enabled  == true, add_interface());
+            show_interface_btn();
             show_message();
             layer[ga].trackpageview(get(layer[panolist].pano[get(xml.scene)].title));
         );

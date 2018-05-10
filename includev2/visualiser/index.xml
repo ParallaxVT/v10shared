@@ -6,7 +6,6 @@
     <data name="background">a</data>
 
     <action name="add_interface">
-        show_interface_btn();
         if(layer[seat_btn_2],
             set(layer[seat_btn_1].x,-140);
             set(layer[seat_btn_2].x,-40);
