@@ -1,4 +1,4 @@
-﻿<krpano>
+<krpano>
 
     <events name="new_event" keep="true" onnewpano="trace(Scene name:, get(xml.scene));" />
     <action name="mobilescale" autorun="preinit" devices="mobile">mul(stagescale,2);</action>
@@ -16,7 +16,7 @@
                 set(layer[fullscreen_btn].scale,.4);
                 set(layer[arrows_container].scale,.4); set(layer[arrows_container].visible,true);
                 set(layer[gradient-top].visible,true);
-                set(layer[title].visible,true);
+                set(layer[title].alpha,1);  set(layer[title].visible,true);
                 if(device.normal,set(layer[title].y,10));
             );
             <!-- H < 276 -->
@@ -24,7 +24,7 @@
                 set(layer[instructions].align,center); set(layer[instructions].y,0);
                 set(layer[arrows_container].visible,false);
                 set(layer[gradient-top].visible,false);
-                set(layer[title].visible,false);
+                set(layer[title].alpha,0); set(layer[title].visible,false);
             );
             <!-- H > 345 -->
             if(stageheight GT 345,
