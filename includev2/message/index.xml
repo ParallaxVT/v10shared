@@ -1,11 +1,6 @@
 <krpano>
-
     <action name="show_message">
-        if(addvisualiser.enabled == true,
-            tween(layer[message].y,23,.5,easeoutquad);
-        ,
-            tween(layer[message].y,15,.5,easeoutquad);
-        );
+        tween(layer[message].y,23,.5,easeoutquad);
     </action>
 
     <action name="hide_message">
@@ -23,7 +18,7 @@
             html="Model shown is for illustrative purposes only"
             interactivecontent="true"
             keep="true"
-            onautosized="if(visible, false, set(y,calc(0 - pixelheight)); set(visible,true); copy(hide-mes,y));"
+            onautosized="if(visible == false, set(y,calc(0 - pixelheight)); set(visible,true); copy(hide-mes,y));"
             onclick="hide_message();"
             url="%SWFPATH%/plugins/textfield.swf"
             visible="false"
