@@ -1,4 +1,4 @@
-<krpano>
+﻿<krpano>
 
     <events name="new_event" keep="true" onnewpano="trace(Scene name:, get(xml.scene));" />
     <action name="mobilescale" autorun="preinit" devices="mobile">mul(stagescale,2);</action>
@@ -121,7 +121,7 @@
         loadscene(%1, null, MERGE);
         movecamera_%1();
         if(develmode.enabled === null,set(logkey,false));
-        if(addvisualiser.enabled  == true, add_interface());
+        if(addvisualiser.enabled == true, add_interface());
         delayedcall(1,
             if(device.mobile,set(yval,15); , set(yval,20));
             if(device.handheld, show_gyro_btn());
@@ -129,7 +129,7 @@
             if(device.fullscreensupport,show_full_screen_btn());
             if(device.normal,show_nav_arrows());
             add_title();
-            show_interface_btn();
+            if(addvisualiser.enabled == true, show_interface_btn());
             show_message();
             layer[ga].trackpageview(get(layer[panolist].pano[get(xml.scene)].title));
         );
