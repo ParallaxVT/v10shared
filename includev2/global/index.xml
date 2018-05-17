@@ -21,7 +21,8 @@
             );
             <!-- H < 276 -->
             if(stageheight LT 276,
-                set(layer[instructions].align,center); set(layer[instructions].y,0);
+                removelayer(instructions);
+                removelayer(instructions_close_btn);
                 set(layer[arrows_container].visible,false);
                 set(layer[gradient-top].visible,false);
                 set(layer[title].alpha,0); set(layer[title].visible,false);
