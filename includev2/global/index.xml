@@ -47,7 +47,7 @@
                 set(layer[seat_btn_2].x,-40);
                 set(layer[bg_btn].x,106);
                 set(layer[message].visible,true);
-                set(layer[message].width,320);
+                set(layer[message].width,340);
                 set(layer[message].css, color:#FFFFFF; font-family:Arial; font-size:14px; text-align:center;);
                 set(layer[fullscreen_btn].scale,.4);
                 set(layer[arrows_container].visible,false);
@@ -56,7 +56,7 @@
             <!-- Too small. Everything -->
             if(stagewidth LT 217,
                 set(layer[visualiser].visible,false);
-                set(layer[message].width,180);
+                set(layer[message].width,200);
                 removelayer(instructions);
                 removelayer(instructions_close_btn);
                 set(layer[arrows_container].visible,false);
@@ -70,7 +70,7 @@
                 set(layer[seat_btn_2].x,-34);
                 set(layer[bg_btn].x,71);
                 set(layer[message].visible,true);
-                set(layer[message].width,180);
+                set(layer[message].width,200);
                 set(layer[fullscreen_btn].scale,.4);
                 set(layer[arrows_container].visible,false);
             );
@@ -85,7 +85,7 @@
                 set(layer[bg_btn].x,106);
                 set(layer[message].visible,true);
                 set(layer[message].css, color:#FFFFFF; font-family:Arial; font-size:16px; text-align:center;);
-                set(layer[message].width,320);
+                set(layer[message].width,340);
                 <!-- W > 340 AND H > 345 -->
                 if(stageheight GT 345,
                     set(layer[fullscreen_btn].scale,.5);
