@@ -45,7 +45,7 @@
                 set(layer[visualiser].scale,.8);
                 set(layer[seat_btn_1].x,-140);
                 set(layer[seat_btn_2].x,-40);
-                set(layer[bg_btn].x,106);
+                if(layer[seat_btn_1].inuse OR layer[seat_btn_1].inuse !== null , set(layer[bg_btn].x,106);, set(layer[bg_btn].x,0));
                 set(layer[message].visible,true);
                 set(layer[message].width,340);
                 set(layer[message].css, color:#FFFFFF; font-family:Arial; font-size:14px; text-align:center;);
@@ -82,7 +82,7 @@
                 set(layer[visualiser].visible,true);
                 set(layer[seat_btn_1].x,-140);
                 set(layer[seat_btn_2].x,-40);
-                set(layer[bg_btn].x,106);
+                if(layer[seat_btn_1].inuse OR layer[seat_btn_1].inuse !== null , set(layer[bg_btn].x,106);, set(layer[bg_btn].x,0));
                 set(layer[message].visible,true);
                 set(layer[message].css, color:#FFFFFF; font-family:Arial; font-size:16px; text-align:center;);
                 set(layer[message].width,340);

@@ -6,25 +6,25 @@
     <data name="background">a</data>
 
     <action name="add_interface">
-        if(layer[seat_btn_2],
+        if(layer[seat_btn_2].inuse,
             set(layer[seat_btn_1].x,-140);
             set(layer[seat_btn_2].x,-40);
             set(layer[bg_btn].x,106);
         );
-        if(layer[seat_btn_3],
+        if(layer[seat_btn_3].inuse,
             set(layer[seat_btn_1].x,-176);
             set(layer[seat_btn_2].x,-76);
             set(layer[seat_btn_3].x,24);
             set(layer[bg_btn].x,166);
         );
-        if(layer[seat_btn_4],
+        if(layer[seat_btn_4].inuse,
             set(layer[seat_btn_1].x,-180);
             set(layer[seat_btn_2].x,-108);
             set(layer[seat_btn_3].x,-36);
             set(layer[seat_btn_4].x,36);
             set(layer[bg_btn].x,180);
         );
-        if(layer[seat_btn_5],
+        if(layer[seat_btn_5].inuse,
             set(layer[seat_btn_1].x,);
             set(layer[seat_btn_2].x,);
             set(layer[seat_btn_3].x,);
@@ -38,8 +38,9 @@
             set(layer[current_seat_btn].parent,seat_btn_1);
             set(layer[current_seat_btn].visible,true);
         );
-        if (layer[seat_btn_1] === null,
+        if(layer[seat_btn_1].inuse == false OR layer[seat_btn_1].inuse === null,
             removelayer(current_seat_btn);
+            set(layer[bg_btn].x,0);
         );
     </action>
 
@@ -109,6 +110,7 @@
         set(layer[seat_btn_%1].zorder,10);
         set(layer[seat_btn_%1].parent,visualiser);
         set(layer[seat_btn_%1].y,2);
+        set(layer[seat_btn_%1].inuse,true);
     </action>
 
     <action name="add_bg_btn">
@@ -190,6 +192,7 @@
 
     <style name="bg_btn_style"
             align="bottomcentre"
+            inuse="false"
             keep="true"
             zorder="10"
             />
