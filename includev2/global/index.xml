@@ -135,6 +135,8 @@
         );
     </action>
 
+    <display autofullscreen="false" />
+
     <view hlookat="0" vlookat="0" fov="100" fovmin="40" fovmax="110" fovtype="MFOV" />
 
     <autorotate enabled="false" waittime="7" horizon="off" speed="6"/>
