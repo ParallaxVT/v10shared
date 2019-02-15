@@ -69,7 +69,6 @@
                edge        ="centertop"
                handcursor  ="false"
                keep        ="true"
-               style       ="title_bg_style"
                url         ="%SWFPATH%/include/title/title_bg.png"
                visible     ="true"
                y           ="0"

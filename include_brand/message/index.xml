@@ -16,7 +16,6 @@
            handcursor  ="false"
            keep        ="true"
            onclick     ="hide_message();"
-           style       ="title_bg_style"
            url         ="%SWFPATH%/include_brand/message/message.png"
            visible     ="true"
            y           ="-50"

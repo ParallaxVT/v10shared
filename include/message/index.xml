@@ -29,7 +29,6 @@
            handcursor  ="false"
            keep        ="true"
            onclick     ="hide_message(); set(layer[message].status,hidden);"
-           style       ="title_bg_style"
            status      ="shown"
            url         ="%SWFPATH%/include_brand/message/message.png"
            visible     ="true"
