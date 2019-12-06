@@ -1,0 +1,101 @@
+@media (max-width: 978px) {
+    h4 {
+        text-align: left !important;
+    }
+
+    h3 {
+        display: block;
+    }
+}
+a:hover {
+    color: #23527c;
+}
+header ul {
+    padding: 20px 0 0 30px;
+}
+header ul li a {
+    font-weight: normal;
+}
+header a.btn {
+    float: right;
+    margin-top: 14px;
+}
+header .btn-outline-primary {
+    color:#5396c0;
+    border-color:#5396c0;
+}
+header .btn-outline-primary:hover {
+    background-color:#23527c;
+    border-color:#23527c;
+}
+
+#main-list h2, #main-list h2 a, #recent h2, #recent h2 a {
+    font-size: 20px;
+    font-weight: 600;
+    color: #5396c0;
+}
+#latest h2, #latest h2 a {
+    font-size: 14px;
+    padding: 20px 0 0;
+    font-weight: bold;
+    color: #303840;
+}
+
+#main-list a, #recent a, #latest a {
+    font-weight: normal;
+    color: #303840;
+}
+#main-list a:hover, #recent a:hover, #latest a:hover {
+    color: #23527c
+}
+
+#main-list ul, #recent ul, #latest ul {
+    padding: 20px 0 20px 30px;
+}
+
+#main-list ul {
+    line-height: 25px;
+}
+
+#main-list ul li a, #latest ul li a {
+    text-transform: uppercase;
+}
+
+#main-list.recent ul li a {
+    text-transform: lowercase;
+}
+
+#latest .dark, .light {
+    position: relative;
+    padding: 0 0 20px 20px;
+}
+
+#latest .dark {
+    background: #e9ecef;
+    border-radius: 0.25rem;
+}
+
+#latest .light {
+    background: white;
+}
+
+#latest .month {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+#main-list .manufacturers {
+    text-align: center;
+}
+#main-list .manufacturers ul {
+    display: inline-table;
+    list-style-type: none;
+    padding: 0;
+}
+#main-list .manufacturers ul li {
+    padding: 0 0 6px;
+}
+#grid-thumbnails a img:hover {
+    opacity: 0.5;
+}
