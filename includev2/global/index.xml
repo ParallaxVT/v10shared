@@ -1,7 +1,7 @@
 ﻿<krpano>
 
+    <krpano stagescale="calc:stagescale * 2" if="stagescale LT 1.0" devices="mobile" />
     <events name="new_event" keep="true" onnewpano="trace(Scene name:, get(xml.scene));" />
-    <action name="mobilescale" autorun="preinit" devices="mobile">mul(stagescale,2);</action>
     <events name="resize-stage" keep="true" onresize="resize-stage" />
 
     <action name="resize-stage">
