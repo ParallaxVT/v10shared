@@ -5,6 +5,7 @@
 
     <action name="hide_message">
         tween(layer[message].y,get(hide-mes),.5,easeinquad);
+        tween(layer[visualiser].y,40,.5,easeinquad);
     </action>
 
     <layer name="message"
@@ -18,7 +19,7 @@
             html="Model shown is for illustrative purposes only"
             interactivecontent="true"
             keep="true"
-            onautosized="if(visible == false, set(y,calc(0 - pixelheight)); set(visible,true); copy(hide-mes,y));"
+            onautosized="if(visible == false, set(y,calc(0 - pixelheight - layer[visualiser].pixelheight)); set(visible,true); copy(hide-mes,y));"
             onclick="hide_message();"
             url="%SWFPATH%/plugins/textfield.swf"
             visible="false"
